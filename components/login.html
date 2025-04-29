@@ -1,63 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | ShopEase</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | ShopEase</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
 </head>
 <body>
-    <div class="auth-container">
-        <div class="card">
-            <div class="logo">
-                <i class="fas fa-shopping-bag"></i>
-                <span>ShopEase</span>
-            </div>
-           
-            <h2>Welcome back</h2>
-            <p class="subtext">Sign in to your account</p>
-           
-            <form class="auth-form">
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" required>
-                </div>
-               
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
-                    <i class="fas fa-eye toggle-password"></i>
-                </div>
-               
-                <div class="options">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#">Forgot password?</a>
-                </div>
-               
-                <button type="submit" class="btn"><a href="../index.html">Sign In</a></button>
-               
-                <div class="divider">
-                    <span>or</span>
-                </div>
-               
-                <p class="footer-text">
-                    Don't have an account? <a href="register.html">Sign up</a>
-                </p>
-            </form>
+  <div class="auth-container">
+    <div class="card">
+      <div class="logo">
+        <i class="fas fa-shopping-bag"></i>
+        <span>ShopEase</span>
+      </div>
+
+      <h2>Welcome back</h2>
+      <p class="subtext">Sign in to your account</p>
+
+      <form class="auth-form" id="loginForm">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="loginEmail" placeholder="Email" required />
         </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+          />
+          <i class="fas fa-eye toggle-password"></i>
+        </div>
+
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn">Sign In</button>
+      </form>
     </div>
-   
-    <script>
-       
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            const passwordInput = this.previousElementSibling;
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
+  </div>
+
+  <script>
+    // Password show/hide toggle
+    document.querySelector(".toggle-password").addEventListener("click", function () {
+      const passwordInput = this.previousElementSibling;
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      this.classList.toggle("fa-eye-slash");
+    });
+
+    // Login form submission
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const payload = { email, password };
+
+      try {
+        const response = await fetch("http://localhost:8080/api/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
         });
-    </script>
+
+        const result = await response.text();
+
+        if (response.ok && result === "Login Successful") {
+          localStorage.setItem("userEmail", email); // Save email in localStorage
+          
+          localStorage.setItem("isLoggedIn",true)
+          alert("Login successful!");
+          window.location.href = "../index.html";
+        } else {
+          alert("Login failed: " + result);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong.");
+      }
+    });
+  </script>
 </body>
 </html>
