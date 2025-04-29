@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopEase - Modern E-Commerce</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <i class="fas fa-shopping-bag"></i>
+            ShopEase
+          </a>
+
+          <div class="nav-links">
+            <a href="#product">Shop</a>
+            <a href="#categories">Categories</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <div class="nav-icons">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="./components/shop.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span>3</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div id="categories" class="container">
+        <h1>Summer Collection 2023</h1>
+        <p>
+          Discover our new arrivals with up to 40% discount on selected items.
+          Limited time offer!
+        </p>
+        <a href="#" class="btn">Shop Now</a>
+        <a href="#" class="btn btn-outline">Learn More</a>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container">
+      <div class="section-title">
+        <h2>Shop by Category</h2>
+      </div>
+
+      <div class="categories">
+        <div class="category-card">
+          <i class="fas fa-tshirt"></i>
+          <h3>Clothing</h3>
+          <p>200+ Products</p>
+        </div>
+
+        <div class="category-card">
+          <i class="fas fa-laptop"></i>
+          <h3>Electronics</h3>
+          <p>150+ Products</p>
+        </div>
+
+        <div class="category-card">
+          <i class="fas fa-home"></i>
+          <h3>Home & Garden</h3>
+          <p>120+ Products</p>
+        </div>
+
+        <div class="category-card">
+          <i class="fas fa-gamepad"></i>
+          <h3>Gaming</h3>
+          <p>90+ Products</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="product" class="container">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+      </div>
+
+      <div class="products">
+        <div class="product-card">
+          <div class="product-badge">Sale</div>
+          <div class="product-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Product"
+            />
+          </div>
+          <div class="product-details">
+            <span class="product-category">Electronics</span>
+            <h4 class="product-title">Wireless Bluetooth Headphones</h4>
+            <div class="product-bottom">
+              <div class="product-price">$89.99 <span>$129.99</span></div>
+              <div class="product-links">
+                <a href="#"><i class="far fa-heart"></i></a>
+                                <a href="#" onclick="event.preventDefault(); showCartAlert()">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Product"
+            />
+          </div>
+          <div class="product-details">
+            <span class="product-category">Accessories</span>
+            <h4 class="product-title">Smart Watch Series 5</h4>
+            <div class="product-bottom">
+              <div class="product-price">$199.99</div>
+              <div class="product-links">
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#" onclick="event.preventDefault(); showCartAlert()">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-badge">New</div>
+          <div class="product-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Product"
+            />
+          </div>
+          <div class="product-details">
+            <span class="product-category">Headphones</span>
+            <h4 class="product-title">Premium Over-Ear Headphones</h4>
+            <div class="product-bottom">
+              <div class="product-price">$149.99 <span>$179.99</span></div>
+              <div class="product-links">
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#" onclick="event.preventDefault(); showCartAlert()">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Product"
+            />
+          </div>
+          <div class="product-details">
+            <span class="product-category">Shoes</span>
+            <h4 class="product-title">Running Sports Shoes</h4>
+            <div class="product-bottom">
+              <div class="product-price">$79.99</div>
+              <div class="product-links">
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#" onclick="event.preventDefault(); showCartAlert()">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container">
+      <div class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest updates on new products and upcoming sales</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="#" class="logo">
+              <i class="fas fa-shopping-bag"></i>
+              ShopEase
+            </a>
+            <p>
+              Your one-stop shop for all your needs. Quality products at
+              affordable prices.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Customer Service</h3>
+            <ul class="footer-links">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Order Tracking</a></li>
+              <li><a href="#">Wishlist</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Shipping Info</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Street, City, Country
+            </p>
+            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            <p><i class="fas fa-envelope"></i> info@shopease.com</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2023 ShopEase. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+
+    <script>
+        function showCartAlert() {
+          Swal.fire({
+            title: 'Added to cart!',
+            text: 'Your item has been successfully added.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            timer: 2000,
+            timerProgressBar: true
+          });
+        }
+
+     
+
+
+      </script>
+
+      
+      
+  </body>
+</html>

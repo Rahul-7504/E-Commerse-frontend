@@ -1,0 +1,223 @@
+/* Base Styles */
+:root {
+    --primary: #4CAF50;
+    --primary-dark: #45a049;
+    --text: #333;
+    --text-light: #666;
+    --border: #e0e0e0;
+    --bg: #f9f9f9;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+ 
+/* Auth Container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+ 
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+ 
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: bold;
+}
+ 
+.logo i {
+    margin-right: 10px;
+    font-size: 28px;
+}
+ 
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+ 
+.subtext {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+ 
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+ 
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+ 
+.input-group i {
+    position: absolute;
+    left: 15px;
+    color: var(--text-light);
+}
+ 
+.input-group .toggle-password {
+    left: auto;
+    right: 15px;
+    cursor: pointer;
+}
+ 
+.input-group input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+ 
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+ 
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+ 
+.options a {
+    color: var(--primary);
+    text-decoration: none;
+}
+ 
+.options a:hover {
+    text-decoration: underline;
+}
+ 
+.terms {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+ 
+.terms a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 3px;
+}
+ 
+.terms a:hover {
+    text-decoration: underline;
+}
+ 
+/* Buttons */
+.btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+ 
+.btn:hover {
+    background-color: var(--primary-dark);
+}
+ 
+.btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+ 
+.btn-outline i {
+    margin-right: 8px;
+}
+ 
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    color: var(--text-light);
+    font-size: 14px;
+}
+ 
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+}
+ 
+.divider::before {
+    margin-right: 10px;
+}
+ 
+.divider::after {
+    margin-left: 10px;
+}
+ 
+/* Footer Text */
+.footer-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-light);
+}
+ 
+.footer-text a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+ 
+.footer-text a:hover {
+    text-decoration: underline;
+}
+ 
