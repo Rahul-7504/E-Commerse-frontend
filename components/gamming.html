@@ -119,7 +119,7 @@
 
       async function fetchGamingProducts(category) {
         try {
-          const apiUrl = `http://localhost:8080/products/search-category?keyword=${encodeURIComponent(
+          const apiUrl = `https://e-commece-dc2r.onrender.com/products/search-category?keyword=${encodeURIComponent(
             category
           )}`;
           const response = await fetch(apiUrl);
