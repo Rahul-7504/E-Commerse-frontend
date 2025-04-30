@@ -113,48 +113,50 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="container">
-      <div class="section-title">
-        <h2>Shop by Category</h2>
-      </div>
+    <!-- Corrected Categories Section -->
+<section class="container">
+  <div class="section-title">
+    <h2>Shop by Category</h2>
+  </div>
 
-      <div class="categories">
-        <div class="category-card">
-          <i class="fas fa-tshirt"></i>
-          <h3>Clothing</h3>
-          <p>200+ Products</p>
-        </div>
+  <div class="categories">
+    <!-- Each category card should be entirely wrapped in the anchor tag -->
+    <a href="./components/gamming.html?product=cloth" class="category-card category-link">
+      <i class="fas fa-tshirt"></i>
+      <h3>Clothing</h3>
+      <p>200+ Products</p>
+    </a>
 
-        <div class="category-card">
-          <i class="fas fa-laptop"></i>
-          <h3>Electronics</h3>
-          <p>150+ Products</p>
-        </div>
+    <a href="./components/gamming.html?product=electronics" class="category-card category-link">
+      <i class="fas fa-laptop"></i>
+      <h3>Electronics</h3>
+      <p>150+ Products</p>
+    </a>
 
-        <div class="category-card">
-          <i class="fas fa-home"></i>
-          <h3>Home & Garden</h3>
-          <p>120+ Products</p>
-        </div>
+    <a href="./components/gamming.html?product=home" class="category-card category-link">
+      <i class="fas fa-home"></i>
+      <h3>Home</h3>
+      <p>120+ Products</p>
+    </a>
 
-        <div class="category-card">
-          <i class="fas fa-gamepad"></i>
-          <h3>Gaming</h3>
-          <p>90+ Products</p>
-        </div>
-      </div>
-    </section>
+    <a href="./components/gamming.html?product=gaming" class="category-card category-link">
+      <i class="fas fa-gamepad"></i>
+      <h3>Gaming</h3>
+      <p>90+ Products</p>
+    </a>
+  </div>
+</section>
 
-    <!-- Featured Products -->
-    <section id="product" class="container">
-      <div class="section-title">
-        <h2>Featured Products</h2>
-      </div>
+   <!-- Featured Products -->
+   <section id="product" class="container">
+    <div class="section-title">
+      <h2>Featured Products</h2>
+    </div>
 
-      <div class="products">
-        <!-- Products will be loaded dynamically from API -->
-      </div>
-    </section>
+    <div class="products">
+      <!-- Products will be loaded dynamically from API -->
+    </div>
+  </section>
 
     <!-- Newsletter -->
     <section class="container">

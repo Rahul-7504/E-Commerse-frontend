@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopEase - Gaming Products</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../index.css" />
+    <style>
+      /* Fallback image styling */
+      .product-img {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .product-img img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .product-img::before {
+        content: attr(alt);
+        position: absolute;
+        color: #888;
+        font-size: 14px;
+        text-align: center;
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="../index.html" class="logo">
+            <i class="fas fa-shopping-bag"></i>
+            ShopEase
+          </a>
+
+          <div class="nav-links">
+            <a href="../index.html#product">Shop</a>
+            <a href="../index.html#categories">Categories</a>
+            <a href="../index.html#contact">Contact</a>
+          </div>
+
+          <div class="nav-icons">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="./shop.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount">0</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Category Banner -->
+    <section class="category-hero gaming-hero">
+      <div class="container">
+        <h1>Gaming Collection</h1>
+        <p>
+          Explore our premium gaming gear - consoles, accessories, and more for
+          the ultimate gaming experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gaming Products Section -->
+    <section class="container">
+      <div class="products" id="gamingProducts">
+        <!-- Gaming products will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <!-- Same footer content as index.html -->
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 ShopEase. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check authentication
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        if (!isLoggedIn) {
+          window.location.href = "./login.html";
+          return;
+        }
+
+        // Get category from query string
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("product"); // e.g., 'gamming'
+
+        if (category) {
+          fetchGamingProducts(category);
+        }
+
+        // Update cart count
+        const cartCount = localStorage.getItem("cartCount") || "0";
+        document.getElementById("cartCount").textContent = cartCount;
+      });
+
+      async function fetchGamingProducts(category) {
+        try {
+          const apiUrl = `http://localhost:8080/products/search-category?keyword=${encodeURIComponent(
+            category
+          )}`;
+          const response = await fetch(apiUrl);
+          if (!response.ok) throw new Error("Failed to fetch products");
+
+          const products = await response.json();
+          displayProducts(products);
+        } catch (error) {
+          console.error("Error fetching gaming products:", error);
+          document.getElementById("gamingProducts").innerHTML =
+            "<p>Failed to load products.</p>";
+        }
+      }
+
+      function displayProducts(products) {
+        const productsContainer = document.getElementById("gamingProducts");
+        productsContainer.innerHTML = "";
+
+        if (!products.length) {
+          productsContainer.innerHTML = "<p>No products found.</p>";
+          return;
+        }
+
+        products.forEach((product) => {
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.innerHTML = `
+            <div class="product-img">
+              <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+              <h3>${product.name}</h3>
+              <div class="product-price">$${product.price.toFixed(2)}</div>
+              <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
+          `;
+          productsContainer.appendChild(productCard);
+        });
+      }
+
+      function addToCart(productId) {
+        let cartCount = parseInt(localStorage.getItem("cartCount") || "0");
+        cartCount++;
+        localStorage.setItem("cartCount", cartCount.toString());
+        document.getElementById("cartCount").textContent = cartCount;
+
+        Swal.fire({
+          title: "Added to Cart!",
+          text: "Item has been added to your shopping cart",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

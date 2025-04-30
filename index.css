@@ -509,4 +509,57 @@ footer {
   
   .search-button:hover {
     background: #eee;
+  }/* Category Hero Section */
+.category-hero {
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+  }
+  
+  .gaming-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://example.com/gaming-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Filter Options */
+  .filter-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+  }
+  
+  .filter-options select {
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+  }
+  
+  /* Product Badge */
+  .product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4757;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  /* Category Link */
+  .category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    text-align: center;
+  }
+  
+  .category-link:hover {
+    color: var(--primary-color);
   }
