@@ -10,6 +10,45 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="index.css" />
+    <style>
+          .user-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Modal background */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Modal content */
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .modal-close {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .modal-close:hover {
+      color: red;
+    }
+    </style>
   </head>
   <body>
     <!-- Header -->
@@ -28,8 +67,29 @@
           </div>
 
           <div class="nav-icons">
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a href="#"><i class="fas fa-user"></i></a>
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Search..." class="search-input" />
+              <button class="search-button" onclick="searchProduct()">
+                <i class="fas fa-search"></i>
+              </button>
+
+            </div>
+
+            <a onclick="openUserModal()">
+              <i class="fas fa-user user-icon"></i>
+            </a>
+            
+            <!-- Modal -->
+            <div id="userModal" class="modal-overlay">
+              <div class="modal-content">
+                <span class="modal-close" onclick="closeUserModal()">×</span>
+                <h3>User Information</h3>
+                <div id="userData">
+                  Loading...
+                </div>
+              </div>
+            </div>
+            
             <a href="./components/shop.html">
               <i class="fas fa-shopping-cart"></i>
               <span>3</span>
@@ -169,41 +229,80 @@
 
     <script>
       // Check registration and authentication status when page loads
-      document.addEventListener('DOMContentLoaded', function() {
-        const isRegistered = localStorage.getItem('isRegistered') === 'true';
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const isRegistered = localStorage.getItem("isRegistered") === "true";
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
         if (!isRegistered) {
           // Redirect to register page if not registered
-          window.location.href = './components/register.html';
+          window.location.href = "./components/register.html";
         } else if (!isLoggedIn) {
           // Redirect to login page if registered but not logged in
-          window.location.href = './components/login.html';
+          window.location.href = "./components/login.html";
         } else {
           // Show main content if registered and logged in
-          document.getElementById('app-content').style.display = 'block';
-          
+          document.getElementById("app-content").style.display = "block";
+
           // Display user info
-          const userEmail = localStorage.getItem('userEmail');
-          const userProfile = document.getElementById('userProfile');
+          const userEmail = localStorage.getItem("userEmail");
+          const userProfile = document.getElementById("userProfile");
           if (userEmail && userProfile) {
             userProfile.title = `Logged in as ${userEmail}`;
           }
-          
+
           // Update cart count
-          const cartCount = localStorage.getItem('cartCount');
+          const cartCount = localStorage.getItem("cartCount");
           if (cartCount) {
-            document.getElementById('cartCount').textContent = cartCount;
+            document.getElementById("cartCount").textContent = cartCount;
           }
-          
+
           // Load products
-          if (typeof fetchProducts === 'function') {
+          if (typeof fetchProducts === "function") {
             fetchProducts();
           }
         }
       });
+      function searchProduct() {
+  const searchInput = document.getElementById('searchInput');
+  const searchValue = searchInput.value;
+  if (searchValue.trim()) {
+    searchInput.value = ''; 
+    window.location.href = `./components/productSearch.html?query=${encodeURIComponent(searchValue)}`;
+  }
+}
+
+
+function openUserModal() {
+    document.getElementById("userModal").style.display = "flex";
+    
+    // Fetch user info from API (replace this with your actual API)
+    fetch('https://your-api-url.com/userinfo')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("userData").innerHTML = `
+          <p><strong>Name:</strong> ${data.name}</p>
+          <p><strong>Email:</strong> ${data.email}</p>
+        `;
+      })
+      .catch(err => {
+        document.getElementById("userData").innerHTML = "Error loading user data.";
+        console.error(err);
+      });
+  }
+
+  function closeUserModal() {
+    document.getElementById("userModal").style.display = "none";
+  }
+
+  // Optional: Close modal on background click
+  window.onclick = function(event) {
+    const modal = document.getElementById("userModal");
+    if (event.target === modal) {
+      closeUserModal();
+    }
+  }
+
     </script>
     <script src="./js/api.js"></script>
-
   </body>
-</html> 
+</html>
