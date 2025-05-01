@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   async function fetchProducts() {
     try {
-      const response = await fetch('https://e-commece-dc2r.onrender.com/products');
+      const response = await fetch('https://e-comerce-ws5c.onrender.com/products');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
