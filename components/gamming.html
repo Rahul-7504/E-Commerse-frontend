@@ -155,7 +155,7 @@
 
       async function fetchGamingProducts(category) {
         try {
-          const apiUrl = `https://e-commece-dc2r.onrender.com/products/search-category?keyword=${encodeURIComponent(
+          const apiUrl = `https://e-comerce-ws5c.onrender.com/products/search-category?keyword=${encodeURIComponent(
             category
           )}`;
           const response = await fetch(apiUrl);
@@ -187,7 +187,7 @@
 
           const imageUrl = product.image?.startsWith("http")
             ? product.image
-            : `https://e-commece-dc2r.onrender.com${product.image}`;
+            : `https://e-comerce-ws5c.onrender.com${product.image}`;
 
           productCard.innerHTML = `
             <div class="product-img">
